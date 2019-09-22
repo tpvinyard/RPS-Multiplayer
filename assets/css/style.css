@@ -1,0 +1,10 @@
+body {
+    background-image: url("./../images/funky-lines.png");
+}
+
+.btn-group {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>RPS - Multiplayer</title>
+
+  <script  src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="assets/javascript/app.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://kit.fontawesome.com/ac2ed87b94.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1 class="text-center">Rock, Paper, Scissors</h1>
+        <h3 class="text-center">Multiplayer!</h3>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">Player 1</h3>
+                        <div class="btn-group" role="group" aria-label="Rock, Paper, Scissors">
+                            <button type="button" class="btn" style="font-size: 4em; background-color: transparent;"><i class="fas fa-hand-rock"></i></button>
+                            <button type="button" class="btn" style="font-size: 4em; background-color: transparent;"><i class="fas fa-hand-paper"></i></button>
+                            <button type="button" class="btn" style="font-size: 4em; background-color: transparent;"><i class="fas fa-hand-scissors"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">Player 2</h3>
+                        <div class="btn-group" role="group" aria-label="Rock, Paper, Scissors">
+                            <button type="button" class="btn" style="font-size: 4em; background-color: transparent;"><i class="fas fa-hand-rock"></i></button>
+                            <button type="button" class="btn" style="font-size: 4em; background-color: transparent;"><i class="fas fa-hand-paper"></i></button>
+                            <button type="button" class="btn" style="font-size: 4em; background-color: transparent;"><i class="fas fa-hand-scissors"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="text-center">Smack Talk!</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
