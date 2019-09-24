@@ -9,7 +9,7 @@ body {
     justify-content: center;
 }
 
-.play-button {
+.play-button-one, .play-button-two {
     font-size: 4em; 
     background-color: transparent;
 }

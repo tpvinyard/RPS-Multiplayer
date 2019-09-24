@@ -1,33 +1,79 @@
-let playerOneWins = 0;
-let playerOneLosses = 0;
-let playerOneTies = 0;
-let playerTwoWins = 0
-let playerTwoLosses = 0;
-let playerTwoTies = 0;
+let player1 = {
+    game: {rock: false, paper: false, scissors: false},
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    hasWon: false,
+    playerSet: false,
+}
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAlw3QxbfupX16ZaSQC81RG6vrLU1yN1Aw",
-    authDomain: "rps-multiplayer-65046.firebaseapp.com",
-    databaseURL: "https://rps-multiplayer-65046.firebaseio.com",
-    projectId: "rps-multiplayer-65046",
-    storageBucket: "rps-multiplayer-65046.appspot.com",
-    messagingSenderId: "108598882221",
-    appId: "1:108598882221:web:4cea1c3ce112b23419fb24"
-  };
+let player2 = {
+    game: {rock: false, paper: false, scissors: false},
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    hasWon: false,
+    playerSet: false,
+}
 
-firebase.initializeApp(config);
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+apiKey: "AIzaSyAlw3QxbfupX16ZaSQC81RG6vrLU1yN1Aw",
+authDomain: "rps-multiplayer-65046.firebaseapp.com",
+databaseURL: "https://rps-multiplayer-65046.firebaseio.com",
+projectId: "rps-multiplayer-65046",
+storageBucket: "rps-multiplayer-65046.appspot.com",
+messagingSenderId: "108598882221",
+appId: "1:108598882221:web:4cea1c3ce112b23419fb24"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 // Create a variable to reference the database
 const database = firebase.database();
+
+//initialize players on page load
+updatePlayers();
 
 
 database.ref().on("value", function(snapshot) {
 
 })
 
-$('.play-button').on('click', function() {
+$(document).ready(function() {
+    
+    $('.play-button-one').on('click', function() {
+
+    player1.game[$(this).data('value')] = true;
+
+    console.log(player1.game);
+    
+    updatePlayers();
+
+    console.log(player1);
+    })
+
+    $('.play-button-two').on('click', function() {
+
+    player2.game[$(this).data('value')] = true;
+
+    console.log(player2.game);
+    
+    updatePlayers();
+
+    console.log(player2);
+    })
 
 })
+
+function updatePlayers() {
+    database.ref().set({
+        player1 ,
+        player2
+    })
+}
 
 function playGame(playerOneInput, playerTwoInput) {
     if (playerOneInput == "rock" && playerTwoInput == "scissors") {

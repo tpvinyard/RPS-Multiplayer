@@ -6,6 +6,9 @@
   <meta charset="UTF-8">
   <title>RPS - Multiplayer</title>
 
+  <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-database.js"></script>
+
   <script  src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="assets/javascript/app.js"></script>
 
@@ -15,9 +18,6 @@
   <script src="https://kit.fontawesome.com/ac2ed87b94.js" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
 </head>
 
@@ -35,9 +35,9 @@
                     <div class="card-body">
                         <h3 class="text-center">Player 1</h3>
                         <div class="btn-group" role="group" aria-label="Rock, Paper, Scissors">
-                            <button type="button" class="btn play-button" data-value="rock" data-player="one"><i class="fas fa-hand-rock"></i></button>
-                            <button type="button" class="btn play-button" data-value="paper" data-player="one"><i class="fas fa-hand-paper"></i></button>
-                            <button type="button" class="btn play-button" data-value="scissors" data-player="one"><i class="fas fa-hand-scissors"></i></button>
+                            <button type="button" class="btn play-button-one" data-value="rock" data-player="one"><i class="fas fa-hand-rock"></i></button>
+                            <button type="button" class="btn play-button-one" data-value="paper" data-player="one"><i class="fas fa-hand-paper"></i></button>
+                            <button type="button" class="btn play-button-one" data-value="scissors" data-player="one"><i class="fas fa-hand-scissors"></i></button>
                         </div>
                     </div>
                 </div>
@@ -66,9 +66,9 @@
                     <div class="card-body">
                         <h3 class="text-center">Player 2</h3>
                         <div class="btn-group" role="group" aria-label="Rock, Paper, Scissors">
-                            <button type="button" class="btn play-button" data-value="rock" data-player="two"><i class="fas fa-hand-rock"></i></button>
-                            <button type="button" class="btn play-button" data-value="paper" data-player="two"><i class="fas fa-hand-paper"></i></button>
-                            <button type="button" class="btn play-button" data-value="scissors" data-player="two"><i class="fas fa-hand-scissors"></i></button>
+                            <button type="button" class="btn play-button-two" data-value="rock" data-player="two"><i class="fas fa-hand-rock"></i></button>
+                            <button type="button" class="btn play-button-two" data-value="paper" data-player="two"><i class="fas fa-hand-paper"></i></button>
+                            <button type="button" class="btn play-button-two" data-value="scissors" data-player="two"><i class="fas fa-hand-scissors"></i></button>
                         </div>
                     </div>
                 </div>
