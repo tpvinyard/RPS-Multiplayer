@@ -43,27 +43,28 @@ database.ref().on("value", function(snapshot) {
 })
 
 $(document).ready(function() {
+    $('#initiate-player-one').on('click', function() {
+        player1.playerSet = true;
+        updatePlayers();
+    })
+
+    $('#initiate-player-two').on('click', function() {
+        player2.playerSet = true;
+        updatePlayers();
+    })
     
     $('.play-button-one').on('click', function() {
-
-    player1.game[$(this).data('value')] = true;
-
-    console.log(player1.game);
-    
-    updatePlayers();
-
-    console.log(player1);
+        player1.game[$(this).data('value')] = true;
+        console.log(player1.game);
+        updatePlayers();
+        console.log(player1);
     })
 
     $('.play-button-two').on('click', function() {
-
-    player2.game[$(this).data('value')] = true;
-
-    console.log(player2.game);
-    
-    updatePlayers();
-
-    console.log(player2);
+        player2.game[$(this).data('value')] = true;
+        console.log(player2.game);
+        updatePlayers();
+        console.log(player2);
     })
 
 })
