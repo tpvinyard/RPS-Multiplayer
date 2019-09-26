@@ -41,6 +41,7 @@ updatePlayers();
 
 
 database.ref().on("value", function(snapshot) {
+    updatePlayersDown(snapshot);
     updateDOM(snapshot);
 })
 
@@ -94,6 +95,11 @@ function updatePlayers() {
         player1 ,
         player2
     })
+}
+
+function updatePlayersDown(snapshot) {
+    player1 = snapshot.val().player1;
+    player2 = snapshot.val().player2;
 }
 
 function updateDOM(Snapshot) {
