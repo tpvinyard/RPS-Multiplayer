@@ -41,8 +41,11 @@ updatePlayers();
 
 
 database.ref().on("value", function(snapshot) {
-    updatePlayersDown(snapshot);
+    player1 = snapshot.val().player1;
+    player2 = snapshot.val().player2;
     updateDOM(snapshot);
+    console.log(player1);
+    console.log(player2);
 })
 
 $(document).ready(function() {
