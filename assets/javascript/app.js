@@ -5,6 +5,7 @@ let player1 = {
     ties: 0,
     hasPlayed: false,
     playerSet: false,
+    playerName: ''
 }
 
 let player2 = {
@@ -14,6 +15,7 @@ let player2 = {
     ties: 0,
     hasPlayed: false,
     playerSet: false,
+    playerName: ''
 }
 
 
@@ -44,13 +46,21 @@ database.ref().on("value", function(snapshot) {
 
 $(document).ready(function() {
     $('#initiate-player-one').on('click', function() {
-        player1.playerSet = true;
-        updatePlayers();
+        event.preventDefault();
+        if (!player1.playerSet) {
+            player1.playerSet = true;
+            player1.playerName = $('#nameInput1').val().trim();
+            updatePlayers();
+        }
     })
 
     $('#initiate-player-two').on('click', function() {
-        player2.playerSet = true;
-        updatePlayers();
+        event.preventDefault();
+        if (!player2.playerSet) {
+            player2.playerSet = true;
+            player2.playerName = $('#nameInput2').val().trim();
+            updatePlayers();
+        }
     })
     
     $('.play-button-one').on('click', function() {
@@ -88,6 +98,10 @@ function updatePlayers() {
 
 function updateDOM(Snapshot) {
     console.log(Snapshot.val());
+
+    $('#player-one-name').text(Snapshot.val().player1.playerName);
+    $('#player-two-name').text(Snapshot.val().player2.playerName);
+
     $('#player-one-wins').text(`Wins: ${Snapshot.val().player1.wins}`);
     $('#player-one-losses').text(`Losses: ${Snapshot.val().player1.losses}`);
     $('#player-one-ties').text(`Ties: ${Snapshot.val().player1.ties}`);

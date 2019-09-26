@@ -33,8 +33,12 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center">Player 1</h3>
-                        <button type="button" class="btn initiate" id="initiate-player-one">Play</button>
+                        <form class="form-inline">
+                            <label class="sr-only" for="inlineFormInputName1">Name</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="nameInput1" placeholder="Jane">
+                            <button type="submit" class="btn initiate" id="initiate-player-one">Play</button>
+                        </form>
+                        <h3 id="player-one-name" class="text-center"></h3>
                         <div class="btn-group" role="group" aria-label="Rock, Paper, Scissors">
                             <button type="button" class="btn play-button-one" data-value="rock" data-player="one"><i class="fas fa-hand-rock"></i></button>
                             <button type="button" class="btn play-button-one" data-value="paper" data-player="one"><i class="fas fa-hand-paper"></i></button>
@@ -58,8 +62,12 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="text-center">Player 2</h3>
-                        <button type="button" class="btn initiate" id="initiate-player-two">Play</button>
+                        <form class="form-inline">
+                            <label class="sr-only" for="inlineFormInputName2">Name</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="nameInput2" placeholder="Jane">
+                            <button type="submit" class="btn initiate" id="initiate-player-two">Play</button>
+                        </form>
+                        <h3 id="player-two-name" class="text-center"></h3>
                         <div class="btn-group" role="group" aria-label="Rock, Paper, Scissors">
                             <button type="button" class="btn play-button-two" data-value="rock" data-player="two"><i class="fas fa-hand-rock"></i></button>
                             <button type="button" class="btn play-button-two" data-value="paper" data-player="two"><i class="fas fa-hand-paper"></i></button>
