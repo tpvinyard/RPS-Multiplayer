@@ -3,7 +3,7 @@ let player1 = {
     wins: 0,
     losses: 0,
     ties: 0,
-    hasWon: false,
+    hasPlayed: false,
     playerSet: false,
 }
 
@@ -12,7 +12,7 @@ let player2 = {
     wins: 0,
     losses: 0,
     ties: 0,
-    hasWon: false,
+    hasPlayed: false,
     playerSet: false,
 }
 
@@ -39,7 +39,7 @@ updatePlayers();
 
 
 database.ref().on("value", function(snapshot) {
-
+    updateDOM(snapshot);
 })
 
 $(document).ready(function() {
@@ -55,16 +55,26 @@ $(document).ready(function() {
     
     $('.play-button-one').on('click', function() {
         player1.game[$(this).data('value')] = true;
+        player1.hasPlayed = true;
         console.log(player1.game);
+        playGame();
+        updatePlayers();
+        checkRoundOver();
         updatePlayers();
         console.log(player1);
+        console.log(player2);
     })
 
     $('.play-button-two').on('click', function() {
         player2.game[$(this).data('value')] = true;
+        player2.hasPlayed = true;
         console.log(player2.game);
+        playGame();
+        updatePlayers();
+        checkRoundOver();
         updatePlayers();
         console.log(player2);
+        console.log(player1);
     })
 
 })
@@ -76,43 +86,76 @@ function updatePlayers() {
     })
 }
 
-function playGame(playerOneInput, playerTwoInput) {
-    if (playerOneInput == "rock" && playerTwoInput == "scissors") {
-        playerOneWins++;
-        playerTwoLosses++;
+function updateDOM(Snapshot) {
+    console.log(Snapshot.val());
+    $('#player-one-wins').text(`Wins: ${Snapshot.val().player1.wins}`);
+    $('#player-one-losses').text(`Losses: ${Snapshot.val().player1.losses}`);
+    $('#player-one-ties').text(`Ties: ${Snapshot.val().player1.ties}`);
+    $('#player-two-wins').text(`Wins: ${Snapshot.val().player2.wins}`);
+    $('#player-two-losses').text(`Losses: ${Snapshot.val().player2.losses}`);
+    $('#player-two-ties').text(`Ties: ${Snapshot.val().player2.ties}`);
+}
+
+function checkRoundOver() {
+    if (player2.hasPlayed && player1.hasPlayed) {
+        resetRound();
     }
-    else if (playerOneInput == "rock" && playerTwoInput == "paper") {
-        playerOneLosses++;
-        playerTwoWins++;
+}
+
+function playGame() {
+    if (player1.game.rock && player2.game.scissors) {
+        player1.wins++;
+        player2.losses++;
     }
-    else if (playerOneInput == "rock" && playerTwoInput == "rock") {
-        playerOneTies++;
-        playerTwoTies++;
+    else if (player1.game.rock && player2.game.paper) {
+        player1.losses++;
+        player2.wins++;
     }
-    else if (playerOneInput == "paper" && playerTwoInput == "scissors") {
-        playerOneLosses++;
-        playerTwoWins++;
+    else if (player1.game.rock && player2.game.rock) {
+        player1.ties++;
+        player2.ties++;
     }
-    else if (playerOneInput == "paper" && playerTwoInput == "paper") {
-        playerOneTies++;
-        playerTwoTies++;
+    else if (player1.game.paper && player2.game.scissors) {
+        player1.losses++;
+        player2.wins++;
     }
-    else if (playerOneInput == "paper" && playerTwoInput == "rock") {
-        playerOneWins++;
-        playerTwoLosses++;
+    else if (player1.game.paper && player2.game.paper) {
+        player1.ties++;
+        player2.ties++;
     }
-    else if (playerOneInput == "scissors" && playerTwoInput == "scissors") {
-        playerOneTies++;
-        playerTwoTies++;
+    else if (player1.game.paper && player2.game.rock) {
+        player1.wins++;
+        player2.losses++;
     }
-    else if (playerOneInput == "scissors" && playerTwoInput == "paper") {
-        playerOneWins++;
-        playerTwoLosses++;
+    else if (player1.game.scissors && player2.game.scissors) {
+        player1.ties++;
+        player2.ties++;
     }
-    else {
-        playerOneLosses++;
-        playerTwoWins++;
+    else if (player1.game.scissors && player2.game.paper) {
+        player1.wins++;
+        player2.losses++;
     }
+    else if (player1.game.scissors && player2.game.rock) {
+        player1.losses++;
+        player2.wins++;
+    }
+}
+
+function resetRound() {
+    player1.game.rock = false;
+    player1.game.paper = false;
+    player1.game.scissors = false;
+    player2.game.rock = false;
+    player2.game.paper = false;
+    player2.game.scissors = false;
+
+    player1.hasPlayed = false;
+    player2.hasPlayed = false;
+
+    database.ref().set({
+        player1,
+        player2
+    })
 }
 
 function resetGame() {
