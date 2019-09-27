@@ -51,7 +51,20 @@ database.ref().on("value", function(snapshot) {
     console.log(player2);
 })
 
+database.ref().on("child_added", function(snapshot) {
+    updateChat(snapshot);
+})
+
 $(document).ready(function() {
+    $('#submit-comment').on('click', function() {
+        event.preventDefault();
+        let chatContents = $('#smack-talk').val().trim();
+        let thisChat = `${localName}: ${chatContents}`;
+        database.ref().push({
+            thisChat
+        })
+    });
+
     $('#initiate-player-one').on('click', function() {
         event.preventDefault();
         if (!player1.playerSet) {
@@ -122,6 +135,10 @@ function updateDOM(Snapshot) {
     $('#player-two-wins').text(`Wins: ${Snapshot.val().player2.wins}`);
     $('#player-two-losses').text(`Losses: ${Snapshot.val().player2.losses}`);
     $('#player-two-ties').text(`Ties: ${Snapshot.val().player2.ties}`);
+}
+
+function updateChat(snapshot) {
+    $('#chats').append(`<p>${snapshot.val().thisChat}</p>`);
 }
 
 function checkRoundOver() {

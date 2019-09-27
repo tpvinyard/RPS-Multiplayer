@@ -13,3 +13,18 @@ body {
     font-size: 4em; 
     background-color: transparent;
 }
+
+.chat-box {
+    background-color: white;
+    width: auto;
+    height: 300px;
+}
+
+#smack-talk {
+    width: auto;
+}
+
+#chats {
+    max-height: 300px;
+    overflow: auto;
+}
