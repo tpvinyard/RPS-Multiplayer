@@ -2,6 +2,10 @@ body {
     background-image: url("./../images/funky-lines.png");
 }
 
+p {
+    margin: 20px;
+}
+
 .btn-group {
     margin: auto;
     display: flex;
@@ -16,12 +20,25 @@ body {
 
 .chat-box {
     background-color: white;
+    border: 1px solid black;
     width: auto;
     height: 300px;
 }
 
+.initiate {
+    color: white;
+    background-color: rgb(37, 37, 37);
+}
+.initiate:hover {
+    color: rgb(199, 199, 199);
+}
+
 #smack-talk {
-    width: auto;
+    width: 50%;
+}
+
+#smack-talk-form {
+    margin-top: 5px;
 }
 
 #chats {
