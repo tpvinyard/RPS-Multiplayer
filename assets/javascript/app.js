@@ -18,6 +18,9 @@ let player2 = {
     playerName: ''
 }
 
+let localName = '';
+let Messages = [];
+
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -53,6 +56,7 @@ $(document).ready(function() {
         event.preventDefault();
         if (!player1.playerSet) {
             player1.playerSet = true;
+            localName = $('#nameInput1').val().trim();
             player1.playerName = $('#nameInput1').val().trim();
             updatePlayers();
         }
@@ -62,6 +66,7 @@ $(document).ready(function() {
         event.preventDefault();
         if (!player2.playerSet) {
             player2.playerSet = true;
+            localName = $('#nameInput2').val().trim();
             player2.playerName = $('#nameInput2').val().trim();
             updatePlayers();
         }
@@ -128,39 +133,48 @@ function checkRoundOver() {
 function playGame() {
     if (player1.game.rock && player2.game.scissors) {
         player1.wins++;
+        $('#result-text').text(`${player1.playerName} wins!`);
         player2.losses++;
     }
     else if (player1.game.rock && player2.game.paper) {
         player1.losses++;
         player2.wins++;
+        $('#result-text').text(`${player2.playerName} wins!`);
     }
     else if (player1.game.rock && player2.game.rock) {
         player1.ties++;
         player2.ties++;
+        $('#result-text').text('Tie!');
     }
     else if (player1.game.paper && player2.game.scissors) {
         player1.losses++;
         player2.wins++;
+        $('#result-text').text(`${player2.playerName} wins!`);
     }
     else if (player1.game.paper && player2.game.paper) {
         player1.ties++;
         player2.ties++;
+        $('#result-text').text('Tie!');
     }
     else if (player1.game.paper && player2.game.rock) {
         player1.wins++;
+        $('#result-text').text(`${player1.playerName} wins!`);
         player2.losses++;
     }
     else if (player1.game.scissors && player2.game.scissors) {
         player1.ties++;
         player2.ties++;
+        $('#result-text').text('Tie!');
     }
     else if (player1.game.scissors && player2.game.paper) {
         player1.wins++;
+        $('#result-text').text(`${player1.playerName} wins!`);
         player2.losses++;
     }
     else if (player1.game.scissors && player2.game.rock) {
         player1.losses++;
         player2.wins++;
+        $('#result-text').text(`${player2.playerName} wins!`);
     }
 }
 
