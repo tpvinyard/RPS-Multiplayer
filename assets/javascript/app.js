@@ -109,6 +109,10 @@ $(document).ready(function() {
         console.log(player1);
     })
 
+    $('#reload-button').on('click', function() {
+        location.reload(true);
+    });
+
 })
 
 function updatePlayers() {
@@ -206,12 +210,10 @@ function resetRound() {
     player1.hasPlayed = false;
     player2.hasPlayed = false;
 
+    $('#exampleModalCenter').modal('show');
+
     database.ref().set({
         player1,
         player2
     })
-}
-
-function resetGame() {
-
 }
